@@ -1,0 +1,363 @@
+package atividadepoo;
+
+import java.util.Random;
+import java.util.Scanner;
+/**
+ *
+ * Jogo 21, criado por: Iago Martins Saraiva
+ */
+public class jogo {
+    
+    public static void main(String[] args) {
+       
+      Scanner scan = new Scanner(System.in);
+      Random aleatorio = new Random ();
+        // introdução do jogo
+        System.out.println("Creditos: Iago Martins Saraiva");
+        System.out.println("Bem vindo ao jogo 21!!");
+        System.out.println("O jogo funciona da seguinte forma: ");
+        System.out.println("Pode participar no minimo 2 pessoas, e no maximo 4.");
+        System.out.println("Você começa com 2 numeros aleatorios na mão, e o objetivo é fazer 21 pontos");
+        System.out.println("Depois que souber a quantidade de pontos que esta na sua mâo, você pode decidir entre"
+                + " puxar outro numero ou manter a quantidade que esta na sua mâo");
+        System.out.println("No final, ganha quem fizer 21 pontos ou fique mais proximo dos 21 em comparação aos demais participantes");
+        System.out.println("Pronto para jogar? (sim/nao)");
+        String comecarJogo = scan.next();
+        
+        // variaveis fora das estruturas de seleção e repetição
+        int jogardnv = 0;
+        String jogar_dnv = "";
+        int verificar = 0;
+        String verificar_jogador = "";
+        String jogador1 = "";
+        String jogador2 = "";
+        String jogador3 = "";
+        String jogador4= "";
+        String opcaoJogar = "";
+        String opcaoJogar2 = "";
+        
+        do { //estrutura de repetição usada pra começar o jogo. É iniciado quando o usario digita "sim"
+        jogardnv++; // variavel de controle
+        if (comecarJogo.equalsIgnoreCase("sim")){
+        do { //estrutura de repetição usada para verificar se os dados dos jogadores estão corretos.
+        verificar++; // variavel de controle 
+        System.out.println("Insira o nome do primeiro jogador para começar: "); // nome primeiro jogador
+        String jogador_1 = scan.next();
+        jogador1 = jogador_1; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+        
+        System.out.println("Insira o nome do segundo jogador para começar: ");// nome segundo jogador
+        String jogador_2 = scan.next();
+        jogador2 = jogador_2; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+        
+        System.out.println("Deseja inserir um outro jogador? (sim/nao)");// ver se quer ter um terceiro jogador
+        String opcao_Jogar = scan.next();
+        opcaoJogar = opcao_Jogar; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+                
+        if (opcaoJogar.equalsIgnoreCase("sim")){ // se o usuario digitar sim, ativa a condicional da estrutura de seleção
+            System.out.println("Insira o nome do terceiro jogador: ");// nome terceiro jogador
+            String jogador_3 = scan.next();
+            jogador3 = jogador_3; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+            System.out.println("Deseja inserir um outro jogador? (sim/nao)"); // ver se quer ter um terceiro jogador
+            String opcaoJogar_2 = scan.next();
+            if (opcaoJogar_2.equalsIgnoreCase("sim")){ // se o usuario digitar sim, ativa a condicional da estrutura de seleção
+                opcaoJogar2 = opcaoJogar_2; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+                System.out.println("Insira o nome do quarto jogador: ");// nome quarto jogador
+                String jogador_4 = scan.next();
+                jogador4 = jogador_4; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+                System.out.println("Limite de jogadores atingidos!!");
+            }
+          } // confirmação dos dados dos jogadores 
+            System.out.println("Nome do primeiro jogador: " + jogador1);
+            System.out.println("Nome do segundo jogador: " + jogador2);
+            if (opcaoJogar.equalsIgnoreCase("sim")){ // essa estrutura de seleção so é ativada se a opcão do terceiro jogador for "sim"
+                System.out.println("Nome do terceiro jogador: " + jogador3);
+            } if (opcaoJogar2.equalsIgnoreCase("sim")){// essa estrutura de seleção so é ativada se a opcão do quarto jogador for "sim"
+                System.out.println("Nome do quarto jogador: " + jogador4);
+            }  
+            System.out.println("Os dados dos jogadores estâo corretos? (sim/nao)");
+            String verificarJogadores = scan.next();
+            verificar_jogador = verificarJogadores; // usei isso aqui pra guardar a variavel fora da estrutura de repetiçâo
+        } while (verificar_jogador.equalsIgnoreCase("nao")); // se a resposta for não, começa tudo de novo 
+      
+      // Mão do jogador 1
+      // o random seleciona um numero aleatorio do 0 ao parametro passado dentre das parenteses. Coloquei o +2 por que o 0 não nos interessa neste jogo, entao o random fica entre 1 e 13.
+      int maoJogador1 = aleatorio.nextInt(13) + 2 + aleatorio.nextInt(13); //usei 2 random e somei os dois para ter o resultado da mão do jogador. 
+      System.out.println(jogador1 + ", sua mâo é: " + maoJogador1);
+      if (maoJogador1 > 21 ){ // estrutura de seleção ativada se a mão do jogador passar de 21 pontos
+          System.out.println("Que pena,"+ jogador1 + "ja ultrapassou os 21 pontos :( ");
+      } else if (maoJogador1 == 21 ) { // estrutura de seleção ativada se a mão do jogador der exatos 21 pontos
+          System.out.println("Uau!!" + jogador1 + " conseguiu 21 pontos de primeira, parabens!!");
+      }
+      // Mão do jogador 2
+      int maoJogador2 = aleatorio.nextInt(13) + 2 + aleatorio.nextInt(13); //foi usado 2 random + a soma deles para dar a mão do jogador.
+      System.out.println(jogador2 + ", sua mâo é: " + maoJogador2);
+      if (maoJogador2 > 21 ){ // estrutura de seleção ativada se a mão do jogador passar de 21 pontos
+          System.out.println("Que pena, "+ jogador2 +" ja ultrapassou os 21 pontos :( ");
+      } else if (maoJogador2 == 21 ) { // estrutura de seleção ativada se a mão do jogador der exatos 21 pontos
+          System.out.println("Uau!! " + jogador2 +" conseguiu 21 pontos de primeira, parabens!!");
+      }
+       // Mão do jogador 3 
+      int mao_jogador3 = 0; // coloquei essas variaveis fora da estrutura de seleção para ficar guardada.
+      int mao_jogador4 = 0; 
+      if (opcaoJogar.equalsIgnoreCase("sim")){ // essa estrutura de seleção so é ativada se a opcão do terceiro jogador for "sim"
+        int maoJogador3 = aleatorio.nextInt(13) + 2 + aleatorio.nextInt(13); //foi usado 2 random + a soma deles para dar a mão do jogador.
+        mao_jogador3 = maoJogador3; // usei isso aqui pra guardar a variavel fora da estrutura de seleção
+        System.out.println( jogador3 + ", sua mâo é: " + maoJogador3);
+        if (maoJogador3 > 21 ){ // estrutura de seleção ativada se a mão do jogador passar de 21 pontos
+            System.out.println("Que pena, "+ jogador3 +" ja ultrapassou os 21 pontos :( "); 
+        } else if (maoJogador3 == 21 ) { // estrutura de seleção ativada se a mão do jogador der exatos 21 pontos
+            System.out.println("Uau!!" + jogador3 +" conseguiu 21 pontos de primeira, parabens!!");
+        }
+            // Mão do jogador 4  
+            if (opcaoJogar2.equalsIgnoreCase("sim")){// essa estrutura de seleção so é ativada se a opcão do quarto jogador for "sim"
+              int maoJogador4 = aleatorio.nextInt(13) + 2 + aleatorio.nextInt(13); //foi usado 2 random + a soma deles para dar a mão do jogador.
+              mao_jogador4 = maoJogador4; // usei isso aqui pra guardar a variavel fora da estrutura de seleção
+              System.out.println( jogador4 + ", sua mâo é:" + maoJogador4);
+              if (maoJogador4 > 21 ){ // estrutura de seleção ativada se a mão do jogador passar de 21 pontos
+                  System.out.println("Que pena, "+ jogador4 +" ja ultrapassou os 21 pontos :( ");
+              } else if (maoJogador4 == 21 ) { // estrutura de seleção ativada se a mão do jogador der exatos 21 pontos
+                  System.out.println("Uau!!" + jogador4 +" conseguiu 21 pontos de primeira, parabens!!");
+              }
+          }
+      }
+      // Puxar numero do jogador 1 
+      int cont1 = 0; //variavel usada para fazer o controle da estrutura de repetição
+      if (maoJogador1 < 21){ // estrutura de seleção ativada se a mão do jogador for menor que 21
+        System.out.println( jogador1 + ", deseja puxar outro numero? (sim/nao)");
+        String opcaoJogador1 = scan.next();
+        String opcaoJogador_1 = "";  // usei isso aqui pra guardar a variavel fora da estrutura de repetição
+            if (opcaoJogador1.equalsIgnoreCase("sim") && (maoJogador1 < 21)  ){ // estrutura de seleção usada para dar inicio a estrutura de repetição
+                do { // estrutura de repetição ativada se a mao do jogador for menor que 21 e ele quiser puxar outro numero
+                cont1 ++; //variavel de controle 
+                maoJogador1 = maoJogador1 + aleatorio.nextInt(13) + 1; // a soma da mao do jogador + um numero aleatorio entre 1 e 13
+                if (maoJogador1 < 21 ){ // estrutura de seleção ativada se a mão do jogador for menor que 21
+                    System.out.println( jogador1 + ", sua nova mâo é: " + maoJogador1);
+                    System.out.println( jogador1 + ", deseja puxar outro numero? (sim/nao)");
+                    String novaOpcaoJogador1 = scan.next();
+                    opcaoJogador_1 = novaOpcaoJogador1; 
+                    } else if (maoJogador1 == 21){  // estrutura de seleção ativada se a mão do jogador for igual a 21
+                        System.out.println("Parabens!! Você conseguiu 21 pontos!!");
+                    } else if (maoJogador1 > 21){  // estrutura de seleção ativada se a mão do jogador for maior que 21
+                        System.out.println( jogador1 + ", sua nova mâo é: " + maoJogador1);
+                        System.out.println("Que pena, Você ultrapassou os 21 pontos! :( ");
+                        opcaoJogador_1 = "nao"; // aqui eu dei o valor pra variavel, pra nao ter risco de ficar no loop eterno
+                }
+                } while (opcaoJogador_1.equalsIgnoreCase("sim")); // a estrutura de repetição so vai terminar se a variavel "opcaoJogador_1" for "nao"
+              } 
+      }
+      // Puxar numero do jogador 2
+      int cont2 = 0; //variavel usada para fazer o controle da estrutura de repetição
+      if (maoJogador2 < 21){  // estrutura de seleção ativida se a mão do jogador for menor que 21
+        System.out.println( jogador2 +", deseja puxar outro numero? (sim/nao) ");
+        String opcaoJogador2 = scan.next();
+        String opcaoJogador_2 = ""; // usei isso aqui pra guardar a variavel fora da estrutura de repetição
+            if (opcaoJogador2.equalsIgnoreCase("sim") && (maoJogador2 < 21)  ){ // estrutura de seleção usada para dar inicio a estrutura de repetição
+                do { // estrutura de repetição ativada se a mao do jogador for menor que 21 e ele quiser puxar outro numero
+                cont2 ++;   //variavel de controle 
+                maoJogador2 = maoJogador2 + aleatorio.nextInt(13) + 1; // a soma da mao do jogador + um numero aleatorio entre 1 e 13
+                if (maoJogador2 < 21 ){ // estrutura de seleção ativada se a mão do jogador for menor que 21
+                  System.out.println( jogador2 + ", sua nova mâo é: " + maoJogador2);
+                  System.out.println( jogador2 + ", deseja puxar outro numero? (sim/nao)");
+                  String novaOpcaoJogador2 = scan.next();
+                  opcaoJogador_2 = novaOpcaoJogador2;
+                  } else if (maoJogador2 == 21){ // estrutura de seleção ativada se a mão do jogador for igual a 21
+                      System.out.println("Parabens!! Você conseguiu 21 pontos!!");
+                  } else if (maoJogador2 > 21){ // estrutura de seleção ativada se a mão do jogador for maior que 21
+                      System.out.println( jogador2 + ", sua nova mâo é: " + maoJogador2);
+                      System.out.println("Que pena, Você ultrapassou os 21 pontos! :( ");
+                      opcaoJogador_2 = "nao"; // aqui eu dei o valor pra variavel, pra nao ter risco de ficar no loop eterno
+                  }
+                } while (opcaoJogador_2.equalsIgnoreCase("sim")); // a estrutura de repetição so vai terminar se a variavel "opcaoJogador_2" for "nao
+              } 
+          }
+      // Puxar numero do jogador 3
+      int cont3 = 0; //variavel usada para fazer o controle da estrutura de repetição
+      if (opcaoJogar.equalsIgnoreCase("sim")){ // estrutura de seleção ativida se a opção do terceiro jogador for "sim"
+            if (mao_jogador3 < 21){ // estrutura de seleção ativida se a mão do jogador for menor que 21
+            System.out.println( jogador3 + ", deseja puxar outro numero? (sim/nao)");
+            String opcaoJogador3 = scan.next();
+            String opcaoJogador_3 = ""; 
+                 if (opcaoJogador3.equalsIgnoreCase("sim") && (mao_jogador3 < 21)  ){ // estrutura de seleção usada para dar inicio a estrutura de repetição
+                 do { // estrutura de repetição ativada se a mao do jogador for menor que 21 e ele quiser puxar outro numero
+                 cont3 ++;    //variavel de controle 
+                 mao_jogador3 = mao_jogador3 + aleatorio.nextInt(13) + 1; // a soma da mao do jogador + um numero aleatorio entre 1 e 13
+                 if (mao_jogador3 < 21 ){ //estrutura de repetição ativada se a opção do terceiro jogador for "sim" e a mão do terceiro jogador for menor que 21 
+                      System.out.println( jogador3 + ", sua nova mâo é: " + mao_jogador3);
+                      System.out.println( jogador3 + ", deseja puxar outro numero? (sim/nao)");
+                      String novaOpcaoJogador3 = scan.next();
+                      opcaoJogador_3 = novaOpcaoJogador3;
+                 } else if (mao_jogador3 == 21){ // estrutura de seleção ativada se a mão do jogador for igual a 21
+                      System.out.println("Parabens!! Você conseguiu 21 pontos!!");
+                 } else if (mao_jogador3 > 21){ // estrutura de seleção ativada se a mão do jogador for maior que 21
+                      System.out.println( jogador3 + ", sua nova mâo é: " + mao_jogador3);
+                      System.out.println("Que pena, Você ultrapassou os 21 pontos! :( ");
+                      opcaoJogador_3 = "nao"; // aqui eu dei o valor pra variavel, pra nao ter risco de ficar no loop eterno
+                 }
+          } while (opcaoJogador_3.equalsIgnoreCase("sim")); // a estrutura de repetição so vai terminar se a variavel "opcaoJogador_3" for "nao
+        } 
+      // Puxar numero do jogador 4 
+            } if (opcaoJogar2.equalsIgnoreCase("sim")){ // estrutura de seleção ativida se a opção do quarto jogador for "sim"
+            int cont4 = 0; //variavel usada para fazer o controle da estrutura de repetição
+            int maoJogador_4 = 0; // variavel usada para guardar o resultado que esta dentro da estrutura de repetição
+                if (mao_jogador4 < 21){ // estrutura de seleção ativida se a mão do jogador for menor que 21
+                    System.out.println( jogador4 +", deseja puxar outro numero? (sim/nao)");
+                    String opcaoJogador4 = scan.next();
+                    String opcaoJogador_4 = ""; 
+                if (opcaoJogador4.equalsIgnoreCase("sim") && (mao_jogador4 < 21)  ){ // estrutura de seleção usada para dar inicio a estrutura de repetição
+                    do { //estrutura de repetição ativada se a opção do quarto jogador for "sim" e a mão do quarto jogador for menor que 21 
+                        cont4 ++;   //variavel de controle 
+                        mao_jogador4 = mao_jogador4 + aleatorio.nextInt(13) + 1; // a soma da mao do jogador + um numero aleatorio entre 1 e 13
+                    if (mao_jogador4 < 21 ){ // estrutura de seleção ativada se a mão do jogador for menor que 21
+                        System.out.println( jogador4 + ", sua nova mâo é: " + mao_jogador4);
+                        System.out.println( jogador4 + ", deseja puxar outro numero? (sim/nao) ");
+                        String novaOpcaoJogador4 = scan.next();
+                        opcaoJogador_4 = novaOpcaoJogador4;
+                    } else if (mao_jogador4 == 21){ // estrutura de seleção ativada se a mão do jogador for igual a 21
+                        System.out.println("Parabens!! Você conseguiu 21 pontos!!");
+                    } else if (mao_jogador4 > 21){ // estrutura de seleção ativada se a mão do jogador for maior que 21
+                        System.out.println( jogador4 + ", sua nova mâo é: " + mao_jogador4);
+                        System.out.println("Que pena, Você ultrapassou os 21 pontos! :( ");
+                        opcaoJogador_4 = "nao"; // aqui eu dei o valor pra variavel, pra nao ter risco de ficar no loop eterno
+                    }
+                } while (opcaoJogador_4.equalsIgnoreCase("sim")); // a estrutura de repetição so vai terminar se a variavel "opcaoJogador_4" for "nao
+                  } 
+              }
+          }
+       }
+      
+      // apuração de dados do jogador 1
+    if (maoJogador1 == 21){ // se der 21
+       System.out.println("Parabens!! "+ jogador1 +" ganhou" );
+    } else if(maoJogador1 > 21) { // se passar de 21
+       System.out.println( jogador1 + " Perdeu!! ");
+    } // se perder
+     else if (maoJogador1 < maoJogador2 && maoJogador2 < 22){ // jogador 1 x jogador 2
+       System.out.println( jogador1 + " Perdeu!!");        
+    } else if (maoJogador1 < mao_jogador3 && mao_jogador3 < 22){ // jogador 1 x jogador 3
+       System.out.println( jogador1 + " Perdeu!!");        
+    } else if (maoJogador1 < mao_jogador4 && mao_jogador4 < 22){ // jogador 1 x jogador 4
+       System.out.println( jogador1 + " Perdeu!!");        
+    } // se ganhar
+    else if (maoJogador1 > maoJogador2 && maoJogador1 < 22 || maoJogador2 > 21){ // jogador 1 x jogador 2
+       System.out.println( jogador1 + " Ganhou!!");        
+    } else if (maoJogador1 > mao_jogador3 && maoJogador1 < 22 || mao_jogador3 > 21){ // jogador 1 x jogador 3
+       System.out.println( jogador1 + " Ganhou!!");         
+    } else if (maoJogador1 > mao_jogador4 && maoJogador1 < 22 || mao_jogador4 > 21){ // jogador 1 x jogador 4
+       System.out.println( jogador1 + " Ganhou!!");       
+    } // se empatar
+    if (maoJogador1 == maoJogador2 && maoJogador1 < 22){ // jogador 1 x jogador 2
+       System.out.println( jogador1 + " Empatou com " + jogador2 + "!!" );
+    }
+    if (maoJogador1 == mao_jogador3 && maoJogador1 < 22){ // jogador 1 x jogador 3
+       System.out.println( jogador1 + " Empatou com " + jogador3 + "!!" );
+    }
+    if (maoJogador1 == mao_jogador4 && maoJogador1 < 22){ // jogador 1 x jogador 4
+       System.out.println( jogador1 + " Empatou com " + jogador4 + "!!" );
+    }
+    
+     // apuração de dados do jogador 2
+    if (maoJogador2 == 21){ // se der 21
+       System.out.println("Parabens!!" + jogador2 + " ganhou!!");
+    } else if(maoJogador2 > 21) { // se passar de 21
+       System.out.println(jogador2 +  " Perdeu!!");
+    } // se perder
+    else if (maoJogador2 < maoJogador1 && maoJogador1 < 22){  // jogador 2 x jogador 1
+       System.out.println( jogador2 +" Perdeu!!");        
+    } else if (maoJogador2 < mao_jogador3 && mao_jogador3 < 22){ // jogador 2 x jogador 3
+       System.out.println( jogador2 +" Perdeu!!");           
+    } else if (maoJogador2 < mao_jogador4 && mao_jogador4 < 22){ // jogador 2 x jogador 4
+       System.out.println( jogador2 +" Perdeu!!");         
+    }  // se ganhar
+    else if (maoJogador2 > maoJogador1 && maoJogador2 < 22 || maoJogador1 > 21 ){ // jogador 2 x jogador 1
+       System.out.println( jogador2 + " Ganhou!!");        
+    } else if (maoJogador2 > mao_jogador3 && maoJogador2 < 22  || maoJogador2 > 21 ){ // jogador 2 x jogador 3
+       System.out.println( jogador2 + " Ganhou!!");          
+    } else if (maoJogador2 > mao_jogador4 && maoJogador2 < 22 || mao_jogador4 > 21 ){ // jogador 2 x jogador 4
+       System.out.println( jogador2 + " Ganhou!!");        
+    } // se empatar
+    if (maoJogador2 == maoJogador1 && maoJogador2 < 22){ // jogador 2 x jogador 1
+       System.out.println( jogador2 + " empatou com " + jogador1 + "!!"); 
+     }
+    if (maoJogador2 == mao_jogador3 && maoJogador2 < 22){ // jogador 2 x jogador 3
+       System.out.println( jogador2 + " empatou com " + jogador3 + "!!");
+     }
+    if (maoJogador2 == mao_jogador4 && maoJogador2 < 22){ // jogador 2 x jogador 4
+       System.out.println ( jogador2 + " empatou com " + jogador4 + "!!");
+     }
+    // estrutura de seleçâo ativada se tiver um terceiro jogador
+    if ((opcaoJogar.equalsIgnoreCase("sim"))){
+     // apuração de dados do jogador 3
+        if (mao_jogador3 == 21){ // se der 21
+           System.out.println("Parabens!!" + jogador3 + "ganhou!!");
+        } else if(mao_jogador3 > 21) { // se passar de 21
+           System.out.println( jogador3 + " Perdeu!!");
+        } // se perder
+        else if (mao_jogador3 < maoJogador1 && maoJogador1 < 22){ // jogador 3 x jogador 1
+           System.out.println( jogador3 + " Perdeu!!" );        
+        } else if (mao_jogador3 < maoJogador2 && maoJogador2 < 22){ // jogador 3 x jogador 2
+           System.out.println( jogador3 + " Perdeu!!" );        
+        } else if (mao_jogador3 < mao_jogador4 && mao_jogador4 < 22){ // jogador 3 x jogador 4
+           System.out.println( jogador3 + " Perdeu!!" );     
+        } // se ganhar
+        else if (mao_jogador3 > maoJogador1 && mao_jogador3 < 22  || maoJogador1 > 21){ // jogador 3 x jogador 1
+           System.out.println( jogador3 + " Ganhou!!");        
+        } else if (mao_jogador3 > maoJogador2 && mao_jogador3 < 22 || maoJogador2 > 21 ){ // jogador 3 x jogador 2
+           System.out.println( jogador3 + " Ganhou!!");             
+        } else if (mao_jogador3 > mao_jogador4 && mao_jogador3 < 22  || mao_jogador4 > 21){ // jogador 3 x jogador 4
+           System.out.println( jogador3 + " Ganhou!!");           
+        } // se empatar
+        if (mao_jogador3 == maoJogador1 && mao_jogador3 < 22){
+           System.out.println( jogador3 + " empatou com " + jogador1 + "!!"); // jogador 3 x jogador 1
+        }
+        if (mao_jogador3 == maoJogador2 && mao_jogador3 < 22){
+           System.out.println( jogador3 + " empatou com " + jogador2 + "!!"); // jogador 3 x jogador 2
+        }
+        if (mao_jogador3 == mao_jogador4 && mao_jogador3 < 22){
+           System.out.println( jogador3 + " empatou com " + jogador4 + "!!"); // jogador 3 x jogador 4
+        } 
+        // estrutura de seleçâo ativada se tiver um quarto jogador
+    if (opcaoJogar2.equalsIgnoreCase("sim")){
+         // apuração de dados do jogador 4
+        if (mao_jogador4 == 21){ // se der 21
+           System.out.println("Parabens!! " + jogador4 + " ganhou!!" );
+        } else if(mao_jogador4 > 21) { // se passar de 21
+           System.out.println( jogador4 + " Perdeu!!");
+        } // se perder
+        else if (mao_jogador4 < maoJogador1 && maoJogador1 < 22){ // jogador 4 x jogador 1
+           System.out.println( jogador4 + " Perdeu!! ");        
+        } else if (mao_jogador4 < maoJogador2 && maoJogador2 < 22){ // jogador 4 x jogador 2
+           System.out.println( jogador4 + " Perdeu!! ");         
+        } else if (mao_jogador4 < mao_jogador3 && mao_jogador3 < 22){ // jogador 4 x jogador 3
+           System.out.println( jogador4 + " Perdeu!! ");      
+        }  // se ganhar
+        else if (mao_jogador4 > maoJogador1 && mao_jogador4 < 22 || maoJogador1 > 21){ // jogador 4 x jogador 1
+           System.out.println( jogador4 + " ganhou!!");        
+        } else if (mao_jogador4 > maoJogador2 && mao_jogador4 < 22 || maoJogador2 > 21){ // jogador 4 x jogador 2
+           System.out.println( jogador4 + " ganhou!!");       
+        } else if (mao_jogador4 > mao_jogador3 && mao_jogador4 < 22 || mao_jogador4 > 21){ // jogador 4 x jogador 3
+           System.out.println( jogador4 + " ganhou!!");      
+        } // se empatar
+        if (mao_jogador4 == maoJogador1 && mao_jogador4 < 22){ // jogador 4 x jogador 1
+           System.out.println( jogador4 + " empatou com " + jogador1 + "!!");
+        }
+        if (mao_jogador4 == maoJogador2 && mao_jogador4 < 22){ // jogador 4 x jogador 2
+           System.out.println( jogador4 + " empatou com " + jogador2 + "!!");
+        }
+        if (mao_jogador4 == mao_jogador3 && mao_jogador4 < 22){ // jogador 4 x jogador 3
+           System.out.println( jogador4 + " empatou com " + jogador3 + "!!"); 
+            }
+           }
+          }
+         } else { // caso a resposta do "Deseja jogar?" seja "não"
+                System.out.println("Uma pena que nao queira jogar :( Atê a proxima");
+                System.out.println("Caso mude de ideia, aperte shift + F6 para jogar :)");
+            } if (comecarJogo.equalsIgnoreCase("sim")){ // caso a resposta do "Deseja jogar?" seja "sim", isso ira aparecer no final
+                System.out.println("Deseja jogar novamente? (sim/nao)");
+                String jogarOutraVez = scan.next();
+                jogar_dnv = jogarOutraVez;
+            } if (jogar_dnv.equalsIgnoreCase("nao")){ // estrutura de repetição ativada se a resposta do "Deseja jogar novamente" for "não"
+                System.out.println("Obrigado por jogar!!");
+            }
+       }   while (jogar_dnv.equalsIgnoreCase ("sim")); // estrutura de repetição que envolve o codigo inteiro, vai se repetir ate o usuario digitar "nao"     
+     }
+ }
